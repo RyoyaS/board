@@ -1,0 +1,24 @@
+{%extends 'base.html' %}
+
+{%block header%}
+<div class="alert alert-primary" role="alert">
+    <h3>仮SNS</h3>
+    <p>{{username}}</p>
+</div>
+{%endblock header%}
+
+{%block content%}
+<div class="container">
+    {%for item in object_list%}
+    <div class="alert alert-dark" role="alert">
+        <a href="{%url 'detail' item.pk %}">
+            <p>タイトル:{{item.title}}</p>
+        </a>
+        <p>投稿者:{{item.author}}</p>
+        <a class="btn btn-primary" href="{%url 'good' item.pk%}" role="button">いいね:{{item.good}}</a>
+        <a class="btn btn-primary" href="#" role="button">既読:{{item.read}}人</a>
+    </div>
+    {%endfor%}
+    <a class="btn btn-primary" href="{%url 'logout'%}" role="button">logout</a>
+</div>
+{%endblock content%}

@@ -1,7 +1,17 @@
 {%extends 'base.html' %}
+{%load static%}
+
+{%block coustomcss%}
+<link href="{%static 'style.css'%}" rel="stylesheet">
+{%endblock coustomcss%}
+
 {%block content%}
 
+
 <body class="text-center">
+
+    {{error}}
+
     <form class="form-signin" method="POST">{% csrf_token %}
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -14,7 +24,9 @@
             <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p>or</p>
+        <a class="w-100 btn btn-lg btn-primary" href="{%url 'login'%}" role="button">Log in</a>
     </form>
-    {{error}}
+
 </body>
 {%endblock content%}

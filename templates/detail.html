@@ -1,0 +1,23 @@
+{%extends 'base.html' %}
+
+{%block header%}
+<div class="alert alert-primary" role="alert">
+    <h3>detail page</h3>
+    <p>{{username}}</p>
+</div>
+{%endblock header%}
+
+{%block content%}
+<div class="container">
+    <div class="alert alert-dark" role="alert">
+        <p>タイトル:{{object.title}}</p>
+        <p>投稿者:{{object.author}}</p>
+        {%if object.snsimage.url != null%}
+        <p><img src="{{object.snsimage.url}}" width="400"></p>
+        {%endif%}
+        <a class="btn btn-primary" href="{%url 'good' object.pk%}" role="button">いいね</a>
+        <a class="btn btn-primary" href="{%url 'read' object.pk%}" role="button">既読</a>
+    </div>
+    <a class="btn btn-primary" href="{%url 'logout'%}" role="button">logout</a>
+</div>
+{%endblock content%}
